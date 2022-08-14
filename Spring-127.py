@@ -309,14 +309,19 @@ class compression:
 
                                                                                 if Times6>=Deep_long or size_of_block!=long_block or  len(data)<=Deep_long_All:
                                                                                     size_data4=Zeroes
-                                                                                elif size_of_block<=size_after_block+1 and Times6<Deep_long and size_of_block==long_block and Zeroes[0:1]=="1":
-                                                                                    size_data4=Zeroes
+                                                                                                                                                                             
+                                                                                elif size_of_block<=size_after_block+1 and Times6<Deep_long and size_of_block==long_block and Zeroes[0:2]=="11":
+                                                                                    size_data4=Zeroes                                                                                             
+                                                                                
+                                                                                   
+                                                                                elif size_of_block<=size_after_block+1 and Times6<Deep_long and size_of_block==long_block and Zeroes[0:2]=="10":
+                                                                                    size_data4="0"+Zeroes
                                                                                 
                                                                                 elif size_of_block<=size_after_block+1 and Times6<Deep_long and size_of_block==long_block and Zeroes[0:2]=="01":
-                                                                                    size_data4="1"+Zeroes
+                                                                                    size_data4="0"+Zeroes
                                                                                     
                                                                                 elif size_of_block>size_after_block+1 and Times6<=Deep_long and size_of_block==long_block and Zeroes[0:2]=="00":
-                                                                                    size_data4="0"+size_data7
+                                                                                    size_data4="1"+size_data7
                                                                                     
                                                                                 
                                                                                 size_data6=size_data6+size_data4       
