@@ -712,7 +712,7 @@ class compression:
                                                                                     
                                                                                 elif Zeroes=="01" and size_after2==long_block and Times6<=Deep_long:
                                                                                     block=block+1
-                                                                                    Zeroes3=size_data3[block:block+1]+"0"+size_data3[block+2:block+blocks]
+                                                                                    Zeroes3=size_data3[block:block+1]+"0"+size_data3[block+1:block+(blocks-1)]
                                                                                     size_after3=len(Zeroes3)
                                                                                     size_data4=Zeroes3
                                                                                     
@@ -720,7 +720,7 @@ class compression:
                                                                                     
                                                                                 elif Zeroes=="00" and size_after2==long_block and Times6<=Deep_long:
                                                                                     block=block+1
-                                                                                    Zeroes3=size_data3[block:block+1]+"1"+size_data3[block+2:block+blocks]
+                                                                                    Zeroes3=size_data3[block:block+1]+"1"+size_data3[block+1:block+(blocks-1)]
                                                                                     size_after3=len(Zeroes3)
                                                                                     size_data4=Zeroes3
                                                                                     
