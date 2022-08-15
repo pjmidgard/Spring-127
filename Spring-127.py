@@ -307,16 +307,16 @@ class compression:
                                                                                 #print(size_after_block)
 
 
-                                                                                if Times6>=Deep_long or size_of_block!=long_block or  len(data)<=Deep_long_All:
+                                                                                if Times6>Deep_long or size_of_block!=long_block or  len(data)<=Deep_long_All:
                                                                                     size_data4=Zeroes
                                                                                     
-                                                                                elif size_of_block<=size_after_block+1 and Times6<Deep_long and size_of_block==long_block and Zeroes[0:2]=="11":
+                                                                                elif size_of_block<=size_after_block+1 and Times6<=Deep_long and size_of_block==long_block and Zeroes[0:2]=="11":
                                                                                     size_data4=Zeroes
 
-                                                                                elif size_of_block<=size_after_block+1 and Times6<Deep_long and size_of_block==long_block and Zeroes[0:2]=="10":
+                                                                                elif size_of_block<=size_after_block+1 and Times6<=Deep_long and size_of_block==long_block and Zeroes[0:2]=="10":
                                                                                     size_data4="0"+Zeroes[0:1]+Zeroes[2:]
                                                                                     
-                                                                                elif size_of_block<=size_after_block+1 and Times6<Deep_long and size_of_block==long_block and Zeroes[0:2]=="01":
+                                                                                elif size_of_block<=size_after_block+1 and Times6<=Deep_long and size_of_block==long_block and Zeroes[0:2]=="01":
                                                                                     size_data4="0"+Zeroes[0:1]+Zeroes[2:]  
                                                                                     
                                                                                 elif size_of_block>size_after_block+1 and Times6<=Deep_long and size_of_block==long_block and Zeroes[0:2]=="00":
@@ -692,7 +692,7 @@ class compression:
                                                                                 Zeroes5=size_data3[block:block+blocks]
                                                                                 size_after2=len(Zeroes5)
 
-                                                                                if Times6>=Deep_long or size_after2!=long_block or  len(data)<=Deep_long_All:
+                                                                                if Times6>Deep_long or size_after2!=long_block or  len(data)<=Deep_long_All:
                                                                                     Zeroes4=size_data3[block:block+blocks]
                                                                                     size_after4=len(Zeroes4)
                                                                                     size_data4=Zeroes4
