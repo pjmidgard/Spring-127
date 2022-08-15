@@ -90,7 +90,7 @@ class compression:
                         data=paq.compress(data)
                         data1=data
                         size_after2=len(data)
-                        print(size_after2)
+                        #print(size_after2)
                         if len(data)==0:
                             x4=0.0
                             print(x4)
@@ -309,19 +309,18 @@ class compression:
 
                                                                                 if Times6>=Deep_long or size_of_block!=long_block or  len(data)<=Deep_long_All:
                                                                                     size_data4=Zeroes
-                                                                                                                                                                             
+                                                                                    
                                                                                 elif size_of_block<=size_after_block+1 and Times6<Deep_long and size_of_block==long_block and Zeroes[0:2]=="11":
-                                                                                    size_data4=Zeroes                                                                                             
-                                                                                
-                                                                                   
+                                                                                    size_data4=Zeroes
+
                                                                                 elif size_of_block<=size_after_block+1 and Times6<Deep_long and size_of_block==long_block and Zeroes[0:2]=="10":
-                                                                                    size_data4="0"+Zeroes
-                                                                                
+                                                                                    size_data4="0"+Zeroes[0:1]+Zeroes[2:]
+                                                                                    
                                                                                 elif size_of_block<=size_after_block+1 and Times6<Deep_long and size_of_block==long_block and Zeroes[0:2]=="01":
-                                                                                    size_data4="0"+Zeroes
+                                                                                    size_data4="0"+Zeroes[0:1]+Zeroes[2:]  
                                                                                     
                                                                                 elif size_of_block>size_after_block+1 and Times6<=Deep_long and size_of_block==long_block and Zeroes[0:2]=="00":
-                                                                                    size_data4="1"+size_data7
+                                                                                    size_data4="10"+size_data7
                                                                                     
                                                                                 
                                                                                 size_data6=size_data6+size_data4       
@@ -405,9 +404,10 @@ class compression:
                                     data2=jl
                                     
                                     size_after=len(jl)
-                                    print(size_after)
+                                    #print(size_after)
 
-                                    
+                                    import paq
+                                    jl=paq.compress(jl)
                                         
                                 
                                     size_after=len(jl)
@@ -511,8 +511,7 @@ class compression:
 
                         
                         
-                        import paq
-                        data=paq.decompress(data)
+                        
 
                         if len(data)==0:
                             x4=0.0
@@ -688,7 +687,8 @@ class compression:
                                                                                 block2=block
                                                                                 
 
-                                                                                Zeroes=size_data3[block:block+1]
+                                                                                Zeroes=size_data3[block:block+2]
+                                                                                Zeroes12=size_data3[block:block+3]
                                                                                 Zeroes2=size_data3[block+1:block+blocks+1]
                                                                                 Zeroes5=size_data3[block:block+blocks]
                                                                                 size_after2=len(Zeroes5)
@@ -700,8 +700,8 @@ class compression:
 
                                                                                     block=block+size_after4
                                                                                     
-                                                                                elif Zeroes=="0" and size_after2==long_block and Times6<=Deep_long:
-                                                                                    block=block+1
+                                                                                elif Zeroes=="11" and size_after2==long_block and Times6<=Deep_long:
+                                                                                    block=block+0
                                                                                     Zeroes3=size_data3[block:block+blocks]
                                                                                     size_after3=len(Zeroes3)
                                                                                     size_data4=Zeroes3
@@ -710,10 +710,24 @@ class compression:
                                                                                     #print(len(size_data4))
                                                                                     
                                                                                     
-                                                                                
-
-                                                                                elif Zeroes=="1" and size_after2==long_block and Times6<=Deep_long:
+                                                                                elif Zeroes=="01" and size_after2==long_block and Times6<=Deep_long:
                                                                                     block=block+1
+                                                                                    Zeroes3=size_data3[block:block+1]+"0"+size_data3[block+2:block+blocks]
+                                                                                    size_after3=len(Zeroes3)
+                                                                                    size_data4=Zeroes3
+                                                                                    
+                                                                                    block=block+size_after3
+                                                                                    
+                                                                                elif Zeroes=="00" and size_after2==long_block and Times6<=Deep_long:
+                                                                                    block=block+1
+                                                                                    Zeroes3=size_data3[block:block+1]+"1"+size_data3[block+2:block+blocks]
+                                                                                    size_after3=len(Zeroes3)
+                                                                                    size_data4=Zeroes3
+                                                                                    
+                                                                                    block=block+size_after3
+
+                                                                                elif Zeroes=="10" and size_after2==long_block and Times6<=Deep_long:
+                                                                                    block=block+2
                                                                                 
                                                                                     size_of_block=len(Zeroes)
                                                                                     #print(size_of_block)
@@ -831,9 +845,8 @@ class compression:
                              
                                     jl=binascii.unhexlify(qqwslenf % n)
                                     
-                                    import brotlicffi
-                                    jl= brotlicffi.decompress(jl)
-                                   
+                                    import paq
+                                    data=paq.decompress(data)
                                     
                                     data2=jl
 
