@@ -406,8 +406,7 @@ class compression:
                                     size_after=len(jl)
                                     #print(size_after)
 
-                                    import paq
-                                    jl=paq.compress(jl)
+                                    
                                         
                                 
                                     size_after=len(jl)
@@ -716,7 +715,7 @@ class compression:
                                                                                     size_after3=len(Zeroes3)
                                                                                     size_data4=Zeroes3
                                                                                     
-                                                                                    block=block+size_after3
+                                                                                    block=block+(size_after3-1)
                                                                                     
                                                                                 elif Zeroes=="00" and size_after2==long_block and Times6<=Deep_long:
                                                                                     block=block+1
@@ -724,7 +723,7 @@ class compression:
                                                                                     size_after3=len(Zeroes3)
                                                                                     size_data4=Zeroes3
                                                                                     
-                                                                                    block=block+size_after3
+                                                                                    block=block+(size_after3-1)
 
                                                                                 elif Zeroes=="10" and size_after2==long_block and Times6<=Deep_long:
                                                                                     block=block+2
